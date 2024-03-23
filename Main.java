@@ -1,5 +1,5 @@
 import java.math.BigInteger;
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class Main {
 
@@ -80,14 +80,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        // Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter two integers and base in single line(separated by spaces):");
-        String input = scanner.nextLine();
-        String[] inputs = input.split(" ");
-        String I1 = inputs[0];
-        String I2 = inputs[1];
-        int B = Integer.parseInt(inputs[2]);
+        // System.out.println("Enter two integers and base in single line(separated by spaces):");
+        // String input = scanner.nextLine();
+        // String[] inputs = input.split(" ");
+        // String I1 = inputs[0];
+        // String I2 = inputs[1];
+        // int B = Integer.parseInt(inputs[2]);
+        String I1 = "101";
+        String I2 = "5";
+        int B = 10;
 
         String sum = add(I1, I2, B);
         String product = multiply(I1, I2, B);
@@ -95,6 +98,6 @@ public class Main {
 
         System.out.println(sum + " " + product + " " + quotient);
 
-        scanner.close();
+        // scanner.close();
     }
 }
