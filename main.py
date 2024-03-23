@@ -1,23 +1,24 @@
 def add(num1, num2, base):
     carry = 0
     result = ''
-    for i in range(max(len(num1), len(num2))):
+    max_len = max(len(num1), len(num2))
+    num1 = num1.zfill(max_len)
+    num2 = num2.zfill(max_len)
+    
+    for i in range(max_len):
         digit_sum = carry
-        if i < len(num1):
-            digit_sum += int(num1[-(i+1)], base)
-        if i < len(num2):
-            digit_sum += int(num2[-(i+1)], base)
-        
+        digit_sum += int(num1[-(i+1)], base) + int(num2[-(i+1)], base)
         carry, digit = divmod(digit_sum, base)
         result = str(digit) + result
     
     if carry > 0:
         result = str(carry) + result
     
-    return result
+    return result.lstrip('0') or '0'
 
 def multiply(num1, num2, base):
     product = [0] * (len(num1) + len(num2))
+    
     for i in range(len(num1)):
         for j in range(len(num2)):
             product[i+j+1] += int(num1[i], base) * int(num2[j], base)
@@ -34,7 +35,13 @@ def divide(num1, num2, base):
     dividend = int(num1, base)
     divisor = int(num2, base)
     quotient = dividend // divisor
-    return str(quotient)
+    
+    result = ''
+    while quotient > 0:
+        quotient, remainder = divmod(quotient, base)
+        result = str(remainder) + result
+    
+    return result.lstrip('0') or '0'
 
 def main():
     num1, num2, base = input().split()
